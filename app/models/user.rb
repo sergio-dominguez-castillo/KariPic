@@ -4,13 +4,18 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  #accepts_nested_attributes_for :images
+  has_many :photography
+  has_many :comments
+  has_many :images, as: :imageable
 
-  #def configure_permitted_parameters
-  #  devise_parameter_sanitizer.permit(:sign_up, keys: [:name, images_attributes: [:url,
-  #  :context, :id]])
-  #  devise_parameter_sanitizer.permit(:account_update, keys: [:name, images_attributes:
-  #  [:url, :context, :id]])
-  #end
+
+  accepts_nested_attributes_for :images
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, images_attributes: [:url,
+    :context, :id]])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, images_attributes:
+    [:url, :context, :id]])
+  end
 
 end
