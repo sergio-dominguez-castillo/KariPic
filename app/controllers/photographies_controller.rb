@@ -22,7 +22,7 @@ class PhotographiesController < ApplicationController
   # POST /photographies or /photographies.json
   def create
     @photography = Photography.new(photography_params)
-
+    @photography.user = current_user
     respond_to do |format|
       if @photography.save
         format.html { redirect_to photography_url(@photography), notice: "Photography was successfully created." }
@@ -65,6 +65,8 @@ class PhotographiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def photography_params
-      params.require(:photography).permit(:photo, :content, :user_id)
+      # params.require(:photography).permit(:photo, :content, :user_id)
+      params.require(:photography).permit(:content, :user_id, images: [])
+      
     end
 end
