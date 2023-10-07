@@ -1,5 +1,8 @@
 class PhotographiesController < ApplicationController
   before_action :set_photography, only: %i[ show edit update destroy ]
+  before_action only: [:new, :create, :edit, :update, :destroy] do
+                authorize_request(["author", "admin"])
+                end
 
   # GET /photographies or /photographies.json
   def index
