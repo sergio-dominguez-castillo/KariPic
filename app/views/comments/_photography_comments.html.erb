@@ -1,11 +1,8 @@
 <div>
   <% @comments.each do |comment| %>
-  <p>
-    <%#= image_tag(comment.user.photo) %>
-    <%= comment.content %>
-    <div>
-      <%= button_to "Destroy this comment", @photography, method: :delete %>
-    </div>
-  </p>
+    <p>
+      <%= image_tag(comment.user.photo) %>
+      <%= comment.content %>
+    </p>
   <% end %>
 </div>
