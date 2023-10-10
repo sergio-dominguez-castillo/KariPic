@@ -1,24 +1,78 @@
-# README
+Descripción
+Karina nos ha contactado sobre un desarrollo que le apasiona. Ella es una fotógrafa
+reconocida mundialmente, sin embargo, no tiene una plataforma para poder exhibir su
+trabajo. A pesar de que Instagram hace un buen trabajo, busca algo más profesional para
+poder mantener el control sobre su trabajo y poder subir lo que ella desee sin condiciones.
+Karina nos pide poder desarrollar una aplicación simple para que los usuarios puedan ver
+sus fotografías y comentarlas. La llamaremos KariPic.
+En su aplicación, los usuarios deben poder registrarse, con su nombre, email, contraseña y
+foto de perfil. Por su parte, las fotografías irán con una leyenda que describe los
+sentimientos y/o situaciones que Karina ha querido retratar y, por último, los comentarios
+deben aparecer con la imagen de quien ha comentado y el contenido de su comentario.
+Aplicando los conceptos y herramientas aprendidas hasta ahora, debes crear una
+plataforma que pueda atender esta solicitud.
+_ 1
+www.desafiolatam.com
+Requerimientos
+1. En la aplicación, sólo Karina podrá subir sus fotos.
+(2 Puntos)
+Nota: genere roles user, author y admin
+cree cuenta karina@gmail.com y luego lo actualice y cambie el rol a author
+cree cuenta admin@gmail.com y luego lo actualice y cambie el rol a admin
+imagen de evidencia
+![Alt text](image.png)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+2. Todo usuario que se registre debe tener su foto de perfil.
+(2 Puntos)
+3. Las imágenes deben estar cargadas en un bucket S3 llamado KariPic.
+(2 Puntos)
+4. Los comentarios deben aparecer con la foto del usuario que ha comentado.
+(2 Puntos)
+5. Subir el proyecto a heroku y asegurarse de que este sea funcional.
+(2 Puntos)
 
-* Ruby version
+Nota: mis tarjetas de debito no me funcionaron en heroku, puedo acceder a servicios de streaming pero imposible a heroku, me rechazo todas mis tarjetas
 
-* System dependencies
+explico las opciones que disponemos par deloyment en heroku
 
-* Configuration
+tenemos dos opciones
+1 consola
 
-* Database creation
+1. realizamos login a heroku, con el comando heroku login
+2. creamos la aplicacion, con el comando heroku create
+3. subimos la aplicacion
+	a. git init
+	b. heroku git:remote -a nombre de tu proyecto creado en Heroku.
+	c. git add .
+	d. git commit -am "Feat: Primer commit to push to heroku"
+	e. git push heroku main
+	
+cualquier mejora o actualizacion de la app
+Dado que nuestra aplicación está enlazada a git debemos subir estos cambios,
+repitiendo el proceso de:
+	a. git add .
+	b. git commit -m ”Describe el cambio realizado”
+	c. git push heroku main
 
-* Database initialization
+2 heroku + github
 
-* How to run the test suite
+1. subir a github
+	a. git add .
+	b. git commit -m ”Describe el cambio realizado”
+	c. git push origin main (o la rama)   
+	
+2. pull request
+	a. con integracion continua ci/cd
+	luego merge pull request
+	confirm merge  -> lleva los cambios a main (github)
 
-* Services (job queues, cache servers, search engines, etc.)
+3. Nota: nos traemos la app a local con toda la integracion continua (ci/cd) del paso anterior
+	git checkout main
+	luego git pull origin main
 
-* Deployment instructions
-
-* ...
+4. ahora voy a heroku a crear la app
+	a. 	le asigo el nombre de la app
+	b. 	luego selecciono el metodo de deployment GitHub 	y lo conecto con la app que esta en github
+	c. 	luego en automatic deploy, selecciono wait for CI to pass defore deploy (esperar a que termine la integracion continua en github
+	d.	o voy a manual deploy, selecciono el branch  to deploy (main) y doy clic en deply branch 

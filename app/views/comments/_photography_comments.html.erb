@@ -2,6 +2,7 @@
   <% @comments.each do |comment| %>
     <p>
       <%= image_tag(comment.user.photo) %>
+      <%#= image_tag comment.images[0] %>
       <%= comment.content %>
     </p>
   <% end %>
