@@ -73,3 +73,4 @@ end
 
 gem "devise", "~> 4.9"
 gem 'activestorage'
+gem "figaro", "~> 1.2"

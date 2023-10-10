@@ -16,7 +16,7 @@ www.desafiolatam.com
 Requerimientos
 1. En la aplicación, sólo Karina podrá subir sus fotos.
 (2 Puntos)
-Nota: genere roles user, author y admin
+Nota: genere roles: user, author y admin
 cree cuenta karina@gmail.com y luego lo actualice y cambie el rol a author
 cree cuenta admin@gmail.com y luego lo actualice y cambie el rol a admin
 imagen de evidencia
@@ -27,6 +27,45 @@ imagen de evidencia
 (2 Puntos)
 3. Las imágenes deben estar cargadas en un bucket S3 llamado KariPic.
 (2 Puntos)
+Nota:mis tarjetas de debito no aplican para compras internacionales, debo resolverlos
+adicionalmete a eso, no utilizare las credenciales del manual,
+pues dice explicitamente "Las claves mostradas en pantalla son claves de prueba. Cada alumno
+debe utilizar su propia clave."
+dado lo anterior, comentare los pasos a seguir, para que las imagenes sean cargadas a bucket aws
+
+1. instalar gema figaro
+	a. bundle add figaro
+	b. bundle exec figaro install
+
+2. Necesitamos las claves de acceso Access Key ID y Secret access Key.
+3. Agregamos las claves a nuestras variables de entorno.
+	a. abrir config/application.yml
+	b. añadir aws_access_key_id: 
+	c. añadir aws_secret_access_key:
+4. Modificamos el archivo de configuraciones development.rb.
+	a. comentar la linea de codigo (anteponer #) -> #config.active_storage.service = :local
+	b. añadir linea de codigo  config.active_storage.service = :amazon
+5. Modificamos el archivo de configuraciones storage.yml y descomentamos las sgtes lineas
+	# Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
+	# amazon:
+	#   service: S3
+	#   access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
+	#   secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
+	#   region: us-east-1
+	#   bucket: your_own_bucket-<%= Rails.env %>
+6. Agregamos datos del bucket a nuestras variables de entorno, archivo config/applciation.yml
+	aws_bucket_name: nombre del bucket que creamos
+	aws_bucket_region: region del bucket que creamos
+7. añadimos la gema S3 al proyecto y la instalamos
+	a. bundle add aws-sdk-s3
+	b. bundle install
+
+para el ambiente de produccion
+
+1. modificar archivo del ambiente, config/enviroments/production.rb
+	a. comentar la linea de codigo (anteponer #) -> #config.active_storage.service = :local
+	b. añadir linea de codigo  config.active_storage.service = :amazon
+
 4. Los comentarios deben aparecer con la foto del usuario que ha comentado.
 (2 Puntos)
 5. Subir el proyecto a heroku y asegurarse de que este sea funcional.
