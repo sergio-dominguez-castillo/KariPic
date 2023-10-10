@@ -17,6 +17,9 @@ Requerimientos
 1. En la aplicación, sólo Karina podrá subir sus fotos.
 (2 Puntos)
 Nota: genere roles: user, author y admin
+
+nota: la password es la misma que utilizo para enseñarnos en clases.
+cree cuenta usuario1@gmail.com para realizar los comentarios
 cree cuenta karina@gmail.com y luego lo actualice y cambie el rol a author
 cree cuenta admin@gmail.com y luego lo actualice y cambie el rol a admin
 imagen de evidencia
